@@ -15,6 +15,8 @@ class Country extends React.Component{
     actionOnRow(item) {
         Actions.categorySelect({country:item.value})
      }
+     
+
     render()
     {
        
@@ -26,7 +28,8 @@ class Country extends React.Component{
                  ,{key: 'Germany',value:'de'},
                  {key: 'France',value:'fr'},{key: 'Egypt',value:'eg'},{key: 'Italy',value:'it'},{key: 'Japan',value:'jp'}
                  ,{key: 'Australia',value:'au'},{key: 'Austria',value:'at'},{key: 'Israel',value:'il'}
-                ,{key: 'Brazil',value:'br'}]}
+                ,{key: 'Brazil',value:'br'},{key: 'Canada',value:'ca'},{key: 'China',value:'cn'},{key: 'South Africa',value:'za'}
+                 ,{key: 'New Zealand',value:'nz'},{key: 'Switzerland',value:'ch'}]}
                  renderItem={({item}) =>   <TouchableOpacity onPress={ () => this.actionOnRow(item)}>
                  <Text style ={{fontSize: 25, marginLeft:10, marginTop:10}}>{item.key}</Text>
                  </TouchableOpacity>}

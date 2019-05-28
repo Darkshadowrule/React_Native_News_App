@@ -39,6 +39,7 @@ class News extends Component {
         console.log(e)
       });
     };
+
     render() {
         return (
             this.state.loading
@@ -51,6 +52,7 @@ class News extends Component {
                 data={this.state.articles}
                 renderItem={({ item }) => <Article article={item} />}
                 keyExtractor={item => item.title+item.url}
+                
             />
         );
     }
