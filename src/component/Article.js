@@ -11,11 +11,11 @@ render()
         <Card>
             <CardSection>
             <View style={styles.thumbnailContainerStyle}>
-            <Image style={styles.thumbnailStyle} source={{ uri: urlToImage}} />
+            <Image style={styles.thumbnailStyle} source={{ uri: urlToImage || "http://izuum.com/noimage.jpg"}} />
         </View>
         <View style={styles.headerContentStyle}>
         <Text style={styles.headerTextStyle}>{title}</Text>
-        <Text>{description}</Text>
+        <Text>{description || 'Read more...'}</Text>
         <View>
         <Text style={{margin: 5,fontStyle: 'italic',color: 'black',fontSize: 15}}>{time}</Text>
         </View>
