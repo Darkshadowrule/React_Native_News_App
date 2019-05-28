@@ -14,6 +14,15 @@ class Category extends React.Component{
     actionOnRow(item) {
         Actions.newsDisplay({country:this.props.country,category:item.key})
      }
+     setFoot()
+     {
+        return(
+            <View
+            style={{height:1,width:'100%',backgroundColor:'black'}}>
+
+            </View>
+        )
+     }
     render()
     {
        
@@ -25,6 +34,7 @@ class Category extends React.Component{
                  <Text style ={{fontSize: 25, marginLeft:10, marginTop:10}}>{item.key}</Text>
                  </TouchableOpacity>}
                  ItemSeparatorComponent={this.renderSeperator}
+                 ListFooterComponent={this.setFoot}
                 />
 
         

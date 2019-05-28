@@ -5,7 +5,9 @@ import Article from './Article'
 class News extends Component {
     state = {
         articles: [],
-        loading:true
+        loading:true,
+        refreshing:true,
+        url:""
     };
     componentWillMount()
     {   
@@ -13,33 +15,48 @@ class News extends Component {
         {
             const url='https://newsapi.org/v2/top-headlines?language=en&pagesize=50&apiKey=49e02f0e80bc4fa5a498a275e7e9d99f'
             this.fetchNews(url)
+            this.setState({
+                url
+            })
         }
         else if(this.props.country=='All' && this.props.category!='All')
         {
             const url=`https://newsapi.org/v2/top-headlines?language=en&category=${this.props.category}&pagesize=50&apiKey=49e02f0e80bc4fa5a498a275e7e9d99f`
-            this.fetchNews(url)       
+            this.fetchNews(url)    
+            this.setState({
+                url
+            })   
         }
         else if(this.props.country!='All' && this.props.category=='All')
         {
             const url=`https://newsapi.org/v2/top-headlines?language=en&country=${this.props.country}&pagesize=50&apiKey=49e02f0e80bc4fa5a498a275e7e9d99f`
-            this.fetchNews(url)   
+            this.fetchNews(url) 
+            this.setState({
+                url
+            })  
         }
         else{
             const url=`https://newsapi.org/v2/top-headlines?language=en&country=${this.props.country}&category=${this.props.category}&pagesize=50&apiKey=49e02f0e80bc4fa5a498a275e7e9d99f`
             this.fetchNews(url)
+            this.setState({
+                url
+            })
         }
         
     }
     fetchNews = (url) => {
         getUSANews(url)
             .then(articles => {
-                this.setState({ articles,loading:false});
+                this.setState({ articles,loading:false,refreshing:false});
             })
             .catch((e) => {
         console.log(e)
       });
     };
-
+    
+	handleRefresh = () => {
+		this.setState({ refreshing: true }, () => this.fetchNews(this.state.url));
+	};
     render() {
         return (
             this.state.loading
@@ -52,6 +69,8 @@ class News extends Component {
                 data={this.state.articles}
                 renderItem={({ item }) => <Article article={item} />}
                 keyExtractor={item => item.title+item.url}
+                refreshing={this.state.refreshing}
+				onRefresh={this.handleRefresh}
                 
             />
         );
