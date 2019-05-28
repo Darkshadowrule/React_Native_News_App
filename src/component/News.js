@@ -9,7 +9,7 @@ class News extends Component {
         refreshing:true,
         url:""
     };
-    componentWillMount()
+    componentDidMount()
     {   
         if(this.props.country=='All' && this.props.category=='All')
         {
