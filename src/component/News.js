@@ -50,7 +50,7 @@ class News extends Component {
                 this.setState({ articles,loading:false,refreshing:false});
             })
             .catch((e) => {
-        console.log(e)
+                this.setState({ articles,loading:false,refreshing:false});
       });
     };
     

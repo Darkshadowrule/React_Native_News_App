@@ -8,7 +8,7 @@ const RouterComponent = () =>{
     return(
         <Router>
             <Stack key="root">
-            <Scene key="countrySelect" component={Country} title="Choose Country" initial/>
+            <Scene key="countrySelect" component={Country} title="Choose Country" initial />
             <Scene key="categorySelect" component={Category} title="Choose Category" />
             <Scene key="newsDisplay" component={News} title="Your News is Here" />
             </Stack>
